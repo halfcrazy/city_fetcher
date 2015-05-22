@@ -35,11 +35,3 @@ var fetch = function(req, res, next) {
 };
 
 exports.fetch = fetch;
-
-var show = function(req, res, next) {
-  res.json({
-    'status': 'works'
-  });
-};
-
-exports.show = show;

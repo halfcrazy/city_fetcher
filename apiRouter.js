@@ -6,7 +6,6 @@ var gradeController = require('./api/grade');
 var router = express.Router();
 
 router.post('/schedule', scheduleController.fetch);
-router.get('/schedule', scheduleController.show);
 
 router.post('/grade', gradeController.fetch);
 
