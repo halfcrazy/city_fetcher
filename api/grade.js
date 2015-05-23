@@ -17,7 +17,7 @@ var fetch = function(req, res, next) {
     if (_err) {
       console.log(_err);
       res.json({
-        'status': 'error'
+        'status': 'login failed'
       });
     } else {
       var _req = request.post('http://cityjw.dlut.edu.cn:7001/ACTIONQUERYSTUDENTSCORE.APPPROCESS')

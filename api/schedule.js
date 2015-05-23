@@ -17,7 +17,7 @@ var fetch = function(req, res, next) {
     if (_err) {
       console.log(_err);
       res.json({
-        'status': 'error'
+        'status': 'login failed'
       });
     } else {
       var _req = request.post('http://cityjw.dlut.edu.cn:7001/ACTIONQUERYSTUDENTSCHEDULEBYSELF.APPPROCESS')
@@ -28,7 +28,10 @@ var fetch = function(req, res, next) {
       _req.set('Cookie', Cookies);
       _req.parse(tools.encodingparser).end(function(_err2, _res) {
         if (_err2) {
-          return _err2;
+          console.log(_err2);
+          res.json({
+            'status': 'error'
+          });
         }
         var html = _res.text;
         html = html.replace(/<br/g, '|<br');
