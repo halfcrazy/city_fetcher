@@ -25,7 +25,7 @@ function parse(html) {
           flag = false;
           return;
         }
-        per_grade[MAP[i1]] = $(this).text();
+        per_grade[MAP[i1]] = $(this).text().trim();
       });
       if (flag)
         output.push(per_grade);

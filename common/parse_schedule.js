@@ -72,19 +72,19 @@ function parse_single_class(iter) {
   var cols = iter.split('|');
   if (cols.length == 6) { //normal class
     var submap = {};
-    submap['class_name'] = cols[0].replace(/(\w)_(\w)/g, '$1$2');
-    submap['teacher_name'] = cols[1].replace(/(\w)_(\w)/g, '$1$2');
-    submap['classrom'] = cols[2];
-    submap['weeks'] = parse_week(cols[3], cols[4]);
-    submap['class_length'] = cols[5];
+    submap['class_name'] = cols[0].replace(/(\w)_(\w)/g, '$1$2').trim();
+    submap['teacher_name'] = cols[1].replace(/(\w)_(\w)/g, '$1$2').trim();
+    submap['classrom'] = cols[2].trim();
+    submap['weeks'] = parse_week(cols[3], cols[4]).trim();
+    submap['class_length'] = cols[5].trim();
     return submap;
   } else if (cols.length == 5) { //sport class
     var submap = {};
-    submap['class_name'] = cols[0].replace(/(\w)_(\w)/g, '$1$2');
-    submap['teacher_name'] = cols[1].replace(/(\w)_(\w)/g, '$1$2');
+    submap['class_name'] = cols[0].replace(/(\w)_(\w)/g, '$1$2').trim();
+    submap['teacher_name'] = cols[1].replace(/(\w)_(\w)/g, '$1$2').trim();
     submap['classrom'] = '';
-    submap['weeks'] = parse_week(cols[2], cols[3]);
-    submap['class_length'] = cols[4];
+    submap['weeks'] = parse_week(cols[2], cols[3]).trim();
+    submap['class_length'] = cols[4].trim();
     return submap;
   }
 }
