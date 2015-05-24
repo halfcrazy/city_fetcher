@@ -9,6 +9,17 @@
 ====
 `$ make start`
 
+用法
+====
+
+1. 成绩查询
+
+ `$ curl -d 'username=学号&password=密码&term=学期编号' http://yourserver:port/api/grade`
+
+2. 课表查询
+
+ `$ curl -d 'username=学号&password=密码&term=学期编号' http://yourserver:port/api/schedule`
+
 TODO
 ====
 
