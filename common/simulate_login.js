@@ -1,5 +1,7 @@
 var request = require('superagent');
+var cheerio = require('cheerio');
 var tesseract = require('tesseract_native');
+var tools = require('./tools');
 
 
 function login(username, password, callback) {
@@ -38,12 +40,15 @@ function login(username, password, callback) {
               'submit.y': '0'
             };
             req2.send(params)
+              .parse(tools.encodingparser)
               .end(function(err3, res3) {
                 if (err3) {
                   return err3;
                 }
                 if (res3.text.indexOf('Logout') != -1) {
-                  return callback(null, Cookies);
+                  var $ = cheerio.load(res3.text);
+                  var name = $('td[align=left]').text();
+                  return callback(null, name, Cookies);
                 } else {
                   return callback('wrong');
                 }
