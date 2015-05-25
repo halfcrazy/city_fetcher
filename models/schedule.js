@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 
 var ScheduleSchema = new Schema({
-  user: { type: ObjectId, ref: 'User' }
+  user: { type: ObjectId, ref: 'User' },
   schedules: [{ schedule: String, term: Number }],
 
   create_at: { type: Date, default: Date.now },
@@ -14,4 +14,4 @@ var ScheduleSchema = new Schema({
 ScheduleSchema.index({user: 1}, {unique: true});
 ScheduleSchema.index({schedules: 1});
 
-mongoose.model('Grade', ScheduleSchema);
+mongoose.model('Schedule', ScheduleSchema);

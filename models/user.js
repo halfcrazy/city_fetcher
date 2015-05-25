@@ -13,6 +13,6 @@ var UserSchema = new Schema({
 
 
 UserSchema.index({username: 1}, {unique: true});
-UserSchema.index({password: 1};
+UserSchema.index({password: 1});
 
 mongoose.model('User', UserSchema);
