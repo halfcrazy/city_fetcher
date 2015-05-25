@@ -1,6 +1,8 @@
 var extend = require('extend');
 var request = require('superagent');
 var fetchGrade = require('../common/fetch_grade').fetchGrade;
+var GradeProxy = require('../proxy').Grade;
+var UserProxy = require('../proxy').User;
 var config = require('../config');
 
 
@@ -11,7 +13,29 @@ var fetch = function(req, res, next) {
   if (!term) {
     term = config.current_term;
   }
-  fetchGrade(username, password, term, function(err, grade){
+  // first query from db to save time.
+  GradeProxy.getGradeByUsername(username, term, function(err, grade){
+    // user does not exist or other errors
+    if(err){
+      console.log(err);
+      return;
+    }
+    if(grade){
+      UserProxy.getUserByUsername(username, function(user){
+        res.json(extend({
+          'status': 'ok'
+        }, {
+          'name': user.name
+        }, {
+          'grade': grade.grade
+        }, {
+          'term': term
+        }));
+      });
+    }
+  });
+  // does not exist in db, fetch from network
+  fetchGrade(username, password, term, function(err, name, grade){
     if(err){
       switch(err){
         case 'login failed':
@@ -28,6 +52,8 @@ var fetch = function(req, res, next) {
     } else {
       res.json(extend({
         'status': 'ok'
+      }, {
+        'name': name
       }, {
         'grade': grade
       }, {

@@ -1,6 +1,7 @@
 var request = require('superagent');
 var cheerio = require('cheerio');
 var tesseract = require('tesseract_native');
+var UserProxy = require('../proxy').User;
 var tools = require('./tools');
 
 
@@ -48,6 +49,17 @@ function login(username, password, callback) {
                 if (res3.text.indexOf('Logout') != -1) {
                   var $ = cheerio.load(res3.text);
                   var name = $('td[align=left]').text();
+                  // if user not in mongodb then insert the user into db
+                  UserProxy.getUserByUsername(username, function(err4, user){
+                    if(err4){}
+                    if(!user){
+                      UserProxy.newAndSave(name, username, password, function(err5){
+                        if(err5){
+                          return callback(err5);
+                        }
+                      });
+                    }
+                  });
                   return callback(null, name, Cookies);
                 } else {
                   return callback('wrong');

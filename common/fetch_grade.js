@@ -1,5 +1,6 @@
 var request = require('superagent');
 var agent = require('./simulate_login');
+var GradeProxy = require('../proxy').Grade;
 var tools = require('./tools');
 var gradeParser = require('./parse_grade');
 
@@ -21,7 +22,10 @@ var fetchGrade = function(username, password, term, callback) {
         }
         var html = _res.text;
         var grade = gradeParser.parse(html);
-        return callback(null, grade);
+        GradeProxy.UpdateGradeByUsername(username, grade, term, function(err3){
+          callback(err3);
+        });
+        return callback(null, name, grade);
       });
     }
   });

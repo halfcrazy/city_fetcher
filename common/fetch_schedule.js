@@ -1,5 +1,6 @@
 var request = require('superagent');
 var agent = require('./simulate_login');
+var ScheduleProxy = require('../proxy').Schedule;
 var tools = require('./tools');
 var scheduleParser = require('../common/parse_schedule');
 
@@ -21,7 +22,10 @@ var fetchSchedule = function(username, password, term, callback) {
         }
         var html = _res.text;
         var schedule = scheduleParser.parse(html);
-        return callback(null, schedule);
+        ScheduleProxy.UpdateScheduleByUsername(username, schedule, term, function(err3){
+          callback(err3);
+        });
+        return callback(null, name, schedule);
       });
     }
   });
