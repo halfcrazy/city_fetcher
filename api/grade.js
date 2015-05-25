@@ -1,4 +1,4 @@
-var extend = require('extend');
+var _ = require('lodash');
 var request = require('superagent');
 var fetchGrade = require('../common/fetch_grade').fetchGrade;
 var GradeProxy = require('../proxy').Grade;
@@ -22,7 +22,7 @@ var fetch = function(req, res, next) {
     }
     if(grade){
       UserProxy.getUserByUsername(username, function(user){
-        res.json(extend({
+        res.json(_.extend({
           'status': 'ok'
         }, {
           'name': user.name
@@ -50,7 +50,7 @@ var fetch = function(req, res, next) {
         break;
       }
     } else {
-      res.json(extend({
+      res.json(_.extend({
         'status': 'ok'
       }, {
         'name': name
