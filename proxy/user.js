@@ -15,5 +15,11 @@ exports.newAndSave = function (name, username, password, callback) {
   user.name = name;
   user.username = username;
   user.password = password;
-  user.save(callback);
+  user.save(function(err){
+    if(err){
+      return callback(err);
+    } else {
+      return callback(null, user._id);
+    }
+  });
 };

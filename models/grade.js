@@ -12,6 +12,5 @@ var GradeSchema = new Schema({
 
 
 GradeSchema.index({user: 1}, {unique: true});
-GradeSchema.index({grades: 1});
 
 mongoose.model('Grade', GradeSchema);

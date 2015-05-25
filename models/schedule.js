@@ -12,6 +12,5 @@ var ScheduleSchema = new Schema({
 
 
 ScheduleSchema.index({user: 1}, {unique: true});
-ScheduleSchema.index({schedules: 1});
 
 mongoose.model('Schedule', ScheduleSchema);
