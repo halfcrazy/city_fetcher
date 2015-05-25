@@ -75,7 +75,7 @@ function parse_single_class(iter) {
     submap['class_name'] = cols[0].replace(/(\w)_(\w)/g, '$1$2').trim();
     submap['teacher_name'] = cols[1].replace(/(\w)_(\w)/g, '$1$2').trim();
     submap['classrom'] = cols[2].trim();
-    submap['weeks'] = parse_week(cols[3], cols[4]).trim();
+    submap['weeks'] = parse_week(cols[3], cols[4]);
     submap['class_length'] = cols[5].trim();
     return submap;
   } else if (cols.length == 5) { //sport class
@@ -83,13 +83,14 @@ function parse_single_class(iter) {
     submap['class_name'] = cols[0].replace(/(\w)_(\w)/g, '$1$2').trim();
     submap['teacher_name'] = cols[1].replace(/(\w)_(\w)/g, '$1$2').trim();
     submap['classrom'] = '';
-    submap['weeks'] = parse_week(cols[2], cols[3]).trim();
+    submap['weeks'] = parse_week(cols[2], cols[3]);
     submap['class_length'] = cols[4].trim();
     return submap;
   }
 }
 
 function parse(html) {
+  html = html.replace(/<br/g, '|<br');
   var $ = cheerio.load(html);
   var output = {};
   for (var i = 1; i <= 7; i++) {
