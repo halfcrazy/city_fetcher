@@ -1,5 +1,4 @@
-# NPM_REGISTRY = "--registry=http://registry.npm.taobao.org"
-NPM_REGISTRY = ""
+NPM_REGISTRY = "--registry=http://registry.npm.taobao.org"
 
 
 install:

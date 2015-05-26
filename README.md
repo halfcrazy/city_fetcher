@@ -3,7 +3,7 @@
 
 安装
 ====
-`$ npm install`
+`$ make install`
 
 运行
 ====
@@ -23,5 +23,7 @@
 TODO
 ====
 
+- [ ] 选修课查询
+- [ ] 前台查询界面
 - [ ] 优化查询速度
 - [x] 添加数据库支持(注:由于课表长度会引起failIndexKeyTooLong，需要在需要在mongo shell中运行 `db.getSiblingDB('admin').runCommand( { setParameter: 1, failIndexKeyTooLong: false } )` )
