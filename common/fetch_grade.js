@@ -22,7 +22,7 @@ var fetchGrade = function(username, password, term, callback) {
         }
         var html = _res.text;
         var grade = gradeParser.parse(html);
-        grade = JSON.stringify(grade)
+        grade = JSON.stringify(grade);
         GradeProxy.UpdateGradeByUsername(username, grade, term, function(err3){
           if(err3){
             return callback(err3);
