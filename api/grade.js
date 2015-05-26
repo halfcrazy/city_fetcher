@@ -23,7 +23,7 @@ var fetch = function(req, res, next) {
       }
     }
     if(grade){
-      UserProxy.getUserByUsername(username, function(err, user){
+      UserProxy.getUserByUsername(username, function(err1, user){
         res.json(_.extend({
           'status': 'ok'
         }, {
@@ -36,9 +36,9 @@ var fetch = function(req, res, next) {
       });
     } else {
       // does not exist in db, fetch from network
-      fetchGrade(username, password, term, function(err, name, grade1){
-        if(err){
-          switch(err.message){
+      fetchGrade(username, password, term, function(err2, name, grade1){
+        if(err2){
+          switch(err2.message){
             case 'login failed':
               res.json({
                 'status': 'login failed'
