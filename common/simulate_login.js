@@ -9,8 +9,8 @@ var tools = require('./tools');
 
 
 function login(username, password, callback) {
-  var loginUrl = 'http://cityjw.dlut.edu.cn:7001/ACTIONLOGON.APPPROCESS?mode=4'
-  var validateImgUrl = 'http://cityjw.dlut.edu.cn:7001/ACTIONVALIDATERANDOMPICTURE.APPPROCESS'
+  var loginUrl = 'http://cityjw.dlut.edu.cn:7001/ACTIONLOGON.APPPROCESS?mode=4';
+  var validateImgUrl = 'http://cityjw.dlut.edu.cn:7001/ACTIONVALIDATERANDOMPICTURE.APPPROCESS';
 
   var Cookies;
 
@@ -35,7 +35,7 @@ function login(username, password, callback) {
           } else {
             //simulate login
             var req2 = request.post(loginUrl).type('form');
-            req2.set('Cookie', Cookies)
+            req2.set('Cookie', Cookies);
             var params = {
               'WebUserNO': username.toString(),
               'Password': password.toString(),

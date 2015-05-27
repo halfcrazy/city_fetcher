@@ -19,9 +19,9 @@ function parse(html) {
   $('tr[height=25]').each(function(i, element) {
     var per_grade = {};
     var flag = true;
-    if (i != 0) {
+    if (i !== 0) {
       $(this).find('td').each(function(i1, element1) {
-        if ($(this).text().trim() == "") {
+        if ($(this).text().trim() === "") {
           flag = false;
           return;
         }

@@ -22,7 +22,7 @@ var fetchSchedule = function(username, password, term, callback) {
         }
         var html = _res.text;
         var schedule = scheduleParser.parse(html);
-        schedule = JSON.stringify(schedule)
+        schedule = JSON.stringify(schedule);
         ScheduleProxy.UpdateScheduleByUsername(username, schedule, term, function(err3){
           if(err3){
             return callback(err3);

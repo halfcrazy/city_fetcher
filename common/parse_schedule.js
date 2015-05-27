@@ -1,3 +1,5 @@
+/*jshint -W069 */
+/*jshint -W004 */
 var cheerio = require('cheerio');
 
 var NUM_WEEK = {
@@ -39,7 +41,7 @@ function parse_week(weekstr, week_kind) {
   };
   var isOdd = function(num) {
     return num & 1;
-  }
+  };
   var flag;
   var weeks = [];
   switch (week_kind) {
@@ -63,7 +65,7 @@ function parse_week(weekstr, week_kind) {
     }
   });
   return weeks;
-};
+}
 
 function parse_single_class(iter) {
   iter = iter.replace(/(\w) (\w)/g, '$1_$2');
@@ -97,7 +99,7 @@ function parse(html) {
     output[NUM_WEEK[i]] = {};
     for (var j = 1; j <= 6; j++) {
       (output[NUM_WEEK[i]])[NUM_CLASS[j]] = [];
-    };
+    }
   }
   /*
   5-2 5-3 5-4 5-5 5-6 5-7 5-8
