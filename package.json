@@ -20,7 +20,8 @@
     "pm2": "~0.12.15",
     "mongoose": "~4.0.3",
     "lodash": "~3.9.2",
-    "eventproxy": "~0.3.3"
+    "eventproxy": "~0.3.3",
+    "compression": "~1.4.4"
   },
   "devDependencies": {
     "gulp": "~3.8.11",

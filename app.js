@@ -1,4 +1,5 @@
 var express = require('express');
+var compression = require('compression');
 var bodyParser = require('body-parser');
 var apiRouter = require('./apiRouter');
 var config = require('./config');
@@ -10,6 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(compression());
 
 app.use('/api/', apiRouter);
 
