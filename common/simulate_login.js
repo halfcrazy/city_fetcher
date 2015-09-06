@@ -29,7 +29,7 @@ function login(username, password, callback) {
           return callback(err1);
         }
         var myOcr = new tesseract.OcrEio();
-        myOcr.ocr(res1.body, {config: 'digits'},function(err2, result) {
+        myOcr.ocr(Buffer(res1.body), function(err2, result) {
           if (err2) {
             return callback(err2);
           } else {
