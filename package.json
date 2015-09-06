@@ -14,7 +14,7 @@
     "express": "~4.12.4",
     "superagent": "~1.2.0",
     "cheerio": "~0.19.0",
-    "tesseract_native": "~0.4.1",
+    "tesseract_native": "~0.5.0",
     "encoding": "~0.1.11",
     "body-parser": "~1.12.4",
     "pm2": "~0.12.15",
